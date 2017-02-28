@@ -321,14 +321,16 @@ static const struct fs_path_config android_files[] = {
     { 04750, AID_ROOT,      AID_SHELL,     0, "system/xbin/su" },
     { 06755, AID_ROOT,      AID_ROOT,      0, "system/xbin/procmem" },
 
-    /* the following files are custom for HTC 10 */
+
+    /* the following files are custom for HTC 10 & OnePlus 3*/
     { 00755, AID_SYSTEM,    AID_RADIO,     CAP_MASK_LONG(CAP_NET_BIND_SERVICE), "system/bin/ims_rtp_daemon" },
     { 00755, AID_SYSTEM,    AID_SYSTEM,    CAP_MASK_LONG(CAP_NET_BIND_SERVICE), "system/bin/imsdatadaemon" },
     { 00755, AID_SYSTEM,    AID_SYSTEM,    CAP_MASK_LONG(CAP_NET_BIND_SERVICE), "system/bin/pm-service" },
     { 00755, AID_BLUETOOTH, AID_BLUETOOTH, CAP_MASK_LONG(CAP_BLOCK_SUSPEND), "system/bin/wcnss_filter" },
+    { 00755, AID_SYSTEM,    AID_SYSTEM,    CAP_MASK_LONG(CAP_BLOCK_SUSPEND), "system/bin/cnss-daemon" },
     
     /* the following files have enhanced capabilities and ARE included in user builds. */
-    { 00550, AID_LOGD,      AID_LOGD,      CAP_MASK_LONG(CAP_SYSLOG) |
+    { 00550, AID_ROOT,      AID_SHELL,     CAP_MASK_LONG(CAP_SYSLOG) |
                                            CAP_MASK_LONG(CAP_AUDIT_CONTROL) |
                                            CAP_MASK_LONG(CAP_SETGID),
                                               "system/bin/logd" },
@@ -339,10 +341,10 @@ static const struct fs_path_config android_files[] = {
                                               "system/bin/inputflinger" },
 
     /* Support FIFO scheduling mode in SurfaceFlinger. */
-    { 00755, AID_SYSTEM,    AID_GRAPHICS,     CAP_MASK_LONG(CAP_SYS_NICE), "system/bin/surfaceflinger" },
+    { 00755, AID_ROOT,      AID_SHELL,     CAP_MASK_LONG(CAP_SYS_NICE), "system/bin/surfaceflinger" },
 
     /* Support hostapd administering a network interface. */
-    { 00755, AID_WIFI,      AID_WIFI,      CAP_MASK_LONG(CAP_NET_ADMIN) |
+    { 00755, AID_ROOT,      AID_SHELL,     CAP_MASK_LONG(CAP_NET_ADMIN) |
                                            CAP_MASK_LONG(CAP_NET_RAW),
                                               "system/bin/hostapd" },
 
@@ -383,7 +385,7 @@ static const struct fs_path_config android_files[] = {
     { 00750, AID_ROOT,      AID_SHELL,     0, "init*" },
     { 00750, AID_ROOT,      AID_SHELL,     0, "sbin/fs_mgr" },
     { 00640, AID_ROOT,      AID_SHELL,     0, "fstab.*" },
-    { 00600, AID_ROOT,      AID_ROOT,      0, "system/build.prop" },
+    { 00644, AID_ROOT,      AID_ROOT,      0, "system/build.prop" },
     { 00600, AID_ROOT,      AID_ROOT,      0, "vendor/build.prop" },
     { 00600, AID_ROOT,      AID_ROOT,      0, "odm/build.prop" },
     { 00600, AID_ROOT,      AID_ROOT,      0, "default.prop" },
