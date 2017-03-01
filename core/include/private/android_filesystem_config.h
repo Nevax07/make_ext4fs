@@ -330,7 +330,7 @@ static const struct fs_path_config android_files[] = {
     { 00755, AID_SYSTEM,    AID_SYSTEM,    CAP_MASK_LONG(CAP_BLOCK_SUSPEND), "system/bin/cnss-daemon" },
     
     /* the following files have enhanced capabilities and ARE included in user builds. */
-    { 00550, AID_ROOT,      AID_SHELL,     CAP_MASK_LONG(CAP_SYSLOG) |
+    { 00755, AID_ROOT,      AID_SHELL,     CAP_MASK_LONG(CAP_SYSLOG) |
                                            CAP_MASK_LONG(CAP_AUDIT_CONTROL) |
                                            CAP_MASK_LONG(CAP_SETGID),
                                               "system/bin/logd" },
@@ -341,7 +341,7 @@ static const struct fs_path_config android_files[] = {
                                               "system/bin/inputflinger" },
 
     /* Support FIFO scheduling mode in SurfaceFlinger. */
-    { 00755, AID_ROOT,      AID_SHELL,     CAP_MASK_LONG(CAP_SYS_NICE), "system/bin/surfaceflinger" },
+    { 00755, AID_SYSTEM,      AID_GRAPHICS,     CAP_MASK_LONG(CAP_SYS_NICE), "system/bin/surfaceflinger" },
 
     /* Support hostapd administering a network interface. */
     { 00755, AID_ROOT,      AID_SHELL,     CAP_MASK_LONG(CAP_NET_ADMIN) |
